@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: deployer-pod
+spec:
+  containers:
+  - name: customimage
+    image: my-custom-image:tools  # Assuming this is the pre built image with Terrafrom Helm kubectl installed and we are using this in the pipeline 
+    command:
+    - cat
+    tty: true
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+      limits:
+        cpu: "1000m"
+        memory: "1024Mi"
