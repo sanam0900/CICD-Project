@@ -1,0 +1,11 @@
+region            = 
+vpc_id            = 
+private_subnet_ids = 
+k8s_vpc_cidr      = 
+instance_class    = 
+allocated_storage = 
+engine_version    = 
+db_name           = 
+username          = 
+password          = 
+multi_az          = 
