@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ index .Values.replicaCount .Values.environment }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: app
+        image: {{ .Values.image.repository }}:{{ index .Values.imageTag .Values.environment }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: DB_HOST
+          value: {{ .Values.db.host }}
+        - name: DB_PORT
+          value: {{ .Values.db.port }}
+        - name: DB_NAME
+          value: {{ .Values.db.name }}
+        - name: DB_USER
+          value: {{ .Values.db.user }}
+        - name: DB_PASS
+          value: {{ .Values.db.pass }}
+        ports:
+        - containerPort: 8080  # Assuming the app listens on port 8080
