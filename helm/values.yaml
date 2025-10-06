@@ -1,0 +1,18 @@
+image:
+  repository: my-app  
+  pullPolicy: IfNotPresent
+db:
+  host: ""  # jenkins will send this value
+  port: ""  
+  name: ""  
+  user: ""  
+  pass: "" 
+environment: "dev"  
+replicaCount: #we can adjust according to the app need 
+  dev: 1
+  staging: 2
+  prod: 3
+imageTag:
+  dev: "dev"
+  staging: "staging"
+  prod: "prod"
