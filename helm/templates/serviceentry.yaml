@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3 # this will inform to iistio about the external db service
+kind: ServiceEntry
+metadata:
+  name: db-egress
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+  - {{ .Values.db.host }}
+  ports:
+  - number: {{ .Values.db.port }}
+    name: db
+    protocol: TCP
+  resolution: DNS
+  location: MESH_EXTERNAL
