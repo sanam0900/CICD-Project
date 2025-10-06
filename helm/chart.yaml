@@ -1,0 +1,4 @@
+apiVersion: v2
+name: app-task
+description: Helm chart for the app part of the pipeline
+version: 0.1.0
